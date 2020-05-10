@@ -1,0 +1,5 @@
+Docker/files/
+keys/
+.idea
+.vagrant
+Docker/.env

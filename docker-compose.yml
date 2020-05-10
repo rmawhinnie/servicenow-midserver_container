@@ -1,0 +1,30 @@
+version: '3.8'
+services:
+  sn-midserver:
+    #build: .
+    image: rmawhinnievs/sn-midserver:latest
+    volumes:
+      - logs:/opt/agent/logs
+    ports:
+      - target: 80
+        published: 8080
+        protocol: tcp
+        mode: host
+      - target: 443
+        published: 4430
+        protocol: tcp
+        mode: host
+    environment:
+      - SN_URL=${SN_URL}
+      - SN_USER=${SN_USER}
+      - SN_MID_NAME=${SN_MID_NAME}
+      - SN_PROXY=${SN_PROXY}
+      - SN_PROXY_PORT=${SN_PROXY_PORT}
+      - SN_PASSWD=${SN_PASSWD}
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 4G
+volumes:
+  logs:
